@@ -2,3 +2,5 @@ resources:
 - post-sync.yaml
 - pre-sync.yaml
 - sno_siteconfig.yaml  
+- image-pull-secret.yaml
+- bmc-secret.yaml
