@@ -36,7 +36,7 @@ spec:
         bmcAddress: "idrac-virtualmedia+https://172.16.1.20/redfish/v1/Systems/System.Embedded.1"
         bmcCredentialsName:
           name: "gitopssno-bmc-secret"
-        disableCertificateVerification: True
+#        disableCertificateVerification: True
         bootMACAddress: "e4:43:4b:fa:d8:ac"
         bootMode: UEFI
         rootDeviceHints:
