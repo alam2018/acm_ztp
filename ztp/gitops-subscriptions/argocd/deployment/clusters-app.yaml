@@ -15,8 +15,8 @@ spec:
   project: default
   source:
     path: ztp/gitops-subscriptions/argocd/resource-hook-example/siteconfig
-    repoURL: https://github.com/openshift-kni/cnf-features-deploy
-    targetRevision: master
+    repoURL: https://github.com/alam2018/acm_ztp
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
