@@ -35,7 +35,7 @@ spec:
         role: "master"
         bmcAddress: "idrac-virtualmedia://172.16.1.20/redfish/v1/Systems/System.Embedded.1"
         bmcCredentialsName:
-          name: "acmsno-bmc-secret"
+          name: "gitopssno-bmc-secret"
 #        bmcDisableCertificateVerification: true
         bootMACAddress: "e4:43:4b:fa:d8:ac"
         bootMode: UEFI
