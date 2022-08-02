@@ -1,62 +1,58 @@
 apiVersion: ran.openshift.io/v1 
 kind: SiteConfig
 metadata:
-  name: "caotvdu74204"
-  namespace: "caotvdu74204"
+  name: "gitopssno"
+  namespace: "gitopssno"
 spec:
-  baseDomain: "exilis.caot.gic.ericsson.se"
+  baseDomain: "tltlab.ericsson.se"
   pullSecretRef:
-    name: "caotvdu74204-pull-secret"
-  clusterImageSetNameRef: "openshift-v4.9.23"
+    name: "gitopssno-image-pull-secret"
+  clusterImageSetNameRef: "openshift-4.10.0"
   sshPublicKey: ""
   clusters:
-  - clusterName: "caotvdu74204"
+  - clusterName: "gitopssno"
     networkType: "OVNKubernetes"
     clusterLabels:
         common-4-9: true
-        forceSync: "2"
         group-du-sno: ""
-        sites: caotvdu74204
+        sites: gitopssno
     clusterNetwork:
-      - cidr: 10.2.0.0/16
+      - cidr: 10.128.0.0/14
         hostPrefix: 23
     machineNetwork:
-      - cidr: 10.114.74.0/24
+      - cidr: 10.20.0.0/24
     serviceNetwork:
       - 172.30.0.0/16
     additionalNTPSources:
-      - 10.29.144.52
+      - 0.rhel.pool.ntp.org
     # Optionally; This can be used to override the KlusterletAddonConfig that is creted for this cluster:
     #crTemplates:
     #  KlusterletAddonConfig: "KlusterletAddonConfigOverride.yaml"
     nodes:
-      - hostName: "caotvdu74204.exilis.caot.gic.ericsson.se"
+      - hostName: "vdusno.gitopssno.tltlab.ericsson.se"
         role: "master"
-        bmcAddress: "redfish-virtualmedia://10.114.73.204/redfish/v1/Systems/1"
+        bmcAddress: "idrac-virtualmedia://172.16.1.20/redfish/v1/Systems/System.Embedded.1"
         bmcCredentialsName:
-          name: "caotvdu74204-secret"
-        bootMACAddress: "b4:96:91:b7:0a:80"
+          name: "acmsno-bmc-secret"
+        bmcDisableCertificateVerification: true
+        bootMACAddress: "e4:43:4b:fa:d8:ac"
         bootMode: UEFI
         rootDeviceHints:
-          hctl: '0:1:0'
-          deviceName: "/dev/nvme0n1"
-        cpuset: "0-1,30-33,62-63"
+          deviceName: "/dev/sdb"
+#        cpuset: "0-1,30-33,62-63"
         nodeNetwork:
           interfaces:
-            - name: ens1f0
-              macAddress: "b4:96:91:b7:0a:80"
+            - name: eno2
+              macAddress: "e4:43:4b:fa:d8:ac"
           config:
             interfaces:
-              - name: ens1f0
+              - name: eno2
                 type: ethernet
                 state: up
-                macAddress: "b4:96:91:b7:0a:80"
+                macAddress: "e4:43:4b:fa:d8:ac"
                 ipv4:
                   enabled: true
                   dhcp: true
                 ipv6:
                   enabled: false
-    proxy:
-      httpProxy: http://10.131.50.202:3128/
-      httpsProxy: http://10.131.50.202:3128/
-      noProxy: 10.114.74.204,api-int.caotvdu74204.exilis.caot.gic.ericsson.se,apps.caotvdu74204.exilis.caot.gic.ericsson.se,api.caotvdu74204.exilis.caot.gic.ericsson.se
+    
