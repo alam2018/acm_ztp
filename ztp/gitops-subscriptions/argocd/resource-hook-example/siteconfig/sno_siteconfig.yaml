@@ -33,7 +33,7 @@ spec:
     nodes:
       - hostName: "vdusno.gitopssno.tltlab.ericsson.se"
         role: "master"
-        bmcAddress: "idrac-virtualmedia://172.16.1.20/redfish/v1/Systems/System.Embedded.1"
+        bmcAddress: "idrac-virtualmedia+https://172.16.1.20/redfish/v1/Systems/System.Embedded.1"
         bmcCredentialsName:
           name: "gitopssno-bmc-secret"
 #        bmcDisableCertificateVerification: true
