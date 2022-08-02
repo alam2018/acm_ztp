@@ -1,0 +1,60 @@
+apiVersion: ran.openshift.io/v1 
+kind: SiteConfig
+metadata:
+  name: "gitopssno"
+  namespace: "gitopssno"
+spec:
+  baseDomain: "tltlab.ericsson.se"
+  pullSecretRef:
+    name: "gitopssno-image-pull-secret"
+  clusterImageSetNameRef: "openshift-4.10.0"
+  sshPublicKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDMSDlK2OVXUyW8kWolKJu9YoPdjRQWXLrorUf5foh2fQXmPLea1DdKHEBZocl8dub6mWiFF+t0wrJXYEfO9aDZHzIs8dzryxL7lkp7p+PzU7cxa7eRNBfrQOYIoWRakhXQoYKGD65ACOoeYc1zrHGYfXLxHnFrWjWVMUwDwYPzOMeITIT30Kt3kwdcDkZObT7Vbr9FhFGgIcZ0Ad7xq/YLi0vrD/ZS4BzOVfjP1Jdieysu4D8HoMsDgneG5qfJ/NtJUClvNdam0HFPPx9dxCf/oSRzvGnanbG5BGR2Gavw3cFJTaAiuNvXkK/Up32kD4jjkYV2Wae+u/pnchjpYN7GEOn1Q2aGcFLzjJPCoTxtN4QwvVRftrajDttO3lShgeU7fGSgXEzU4CeZGn74C+ZghZK2nhSOrPnZK/LnQhBNTyli5oU24AqWESiv1itADcfkSZiIcM1WBhRII7qAwfPzj0A2ITfwO+k3i/1xZBsiL1JsvW7NxY8/riRo9jjAnFE= kni@acm-provisioner"
+  clusters:
+  - clusterName: "gitopssno"
+    networkType: "OVNKubernetes"
+    clusterType: sno
+    clusterProfile: du
+    clusterLabels:
+        common: true
+        group-du-sno: ""
+        sites: gitopssno
+    clusterNetwork:
+      - cidr: 10.128.0.0/14
+        hostPrefix: 23
+    machineNetwork:
+      - cidr: 10.20.0.0/24
+    serviceNetwork:
+      - 172.30.0.0/16
+    additionalNTPSources:
+      - 0.rhel.pool.ntp.org
+    # Optionally; This can be used to override the KlusterletAddonConfig that is creted for this cluster:
+    #crTemplates:
+    #  KlusterletAddonConfig: "KlusterletAddonConfigOverride.yaml"
+    nodes:
+      - hostName: "vdusno.gitopssno.tltlab.ericsson.se"
+        role: "master"
+        bmcAddress: "idrac-virtualmedia://172.16.1.20/redfish/v1/Systems/System.Embedded.1"
+        bmcCredentialsName:
+          name: "acmsno-bmc-secret"
+        bmcDisableCertificateVerification: true
+        bootMACAddress: "e4:43:4b:fa:d8:ac"
+        bootMode: UEFI
+        rootDeviceHints:
+          deviceName: "/dev/sdb"
+#        cpuset: "0-1,30-33,62-63"
+        nodeNetwork:
+          interfaces:
+            - name: eno2
+              macAddress: "e4:43:4b:fa:d8:ac"
+          config:
+            interfaces:
+              - name: eno2
+                type: ethernet
+                state: up
+                macAddress: "e4:43:4b:fa:d8:ac"
+                ipv4:
+                  enabled: true
+                  dhcp: true
+                ipv6:
+                  enabled: false
+    

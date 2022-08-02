@@ -1,0 +1,25 @@
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+     # name: gitopssno
+# ---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+    name: clusters
+    namespace: openshift-gitops
+spec:
+  destination:
+      server: https://kubernetes.default.svc
+      namespace: gitopssno
+  project: default
+  source:
+      path: site-config 
+      repoURL: https://github.com/alam2018/acm_ztp
+      targetRevision: master 
+  syncPolicy:
+      automated:
+          prune: true
+          selfHeal: true
+      syncOptions:
+      - CreateNamespace=true
