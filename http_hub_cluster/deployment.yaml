@@ -23,10 +23,10 @@ spec:
           stdin: true
           volumeMounts:
           - mountPath: /var/www/html/iso_share
-            name: iso_share
+            name: iso-share
 #          serviceAccount: default
       volumes:
-      - name: iso_share
+      - name: iso-share
         hostPath:
             path: /home/kni/acm/mirror_registry/image_place_holder
       terminationGracePeriodSeconds: 5
