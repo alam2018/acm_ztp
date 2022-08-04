@@ -21,5 +21,12 @@ spec:
           terminationMessagePolicy: File
           tty: true
           stdin: true
+          volumeMounts:
+          - mountPath: /var/www/html/iso_share
+            name: iso_share
 #          serviceAccount: default
+      volumes:
+      - name: iso_share
+        hostPath:
+            path: /home/kni/acm/mirror_registry/image_place_holder
       terminationGracePeriodSeconds: 5
