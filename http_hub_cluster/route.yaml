@@ -1,0 +1,16 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: imager-server
+spec:
+  hostname: imager-server.apps.acmcluster.tltlab.ericsson.se
+  port:
+    targetPort: httpd
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: imager-server
+    weight: 100
+  wildcardPolicy: None

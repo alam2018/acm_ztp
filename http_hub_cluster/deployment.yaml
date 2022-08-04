@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imager-server
+  labels:
+    app: imager-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: imager-server
+  template:
+    metadata:
+      labels:
+        app: imager-server
+    spec:
+      containers:
+        - name: https
+          image: "registry.redhat.io/rhscl/httpd-24-rhel7"
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          tty: true
+          stdin: true
+          serviceAccount: default
+      terminationGracePeriodSeconds: 5
