@@ -3,7 +3,7 @@ kind: Route
 metadata:
   name: imager-server
 spec:
-  hostname: imager-server.apps.acmcluster.tltlab.ericsson.se
+  host: imager-server.apps.acmcluster.tltlab.ericsson.se
   port:
     targetPort: httpd
   tls:
