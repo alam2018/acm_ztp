@@ -16,17 +16,10 @@ spec:
     spec:
       containers:
         - name: https
-          image: "registry.redhat.io/rhscl/httpd-24-rhel7"
+#          image: "registry.redhat.io/rhscl/httpd-24-rhel7"
+          image: "localhost/http_iso:latest"
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           tty: true
           stdin: true
-          volumeMounts:
-          - mountPath: /var/www/html/iso_share
-            name: iso-share
 #          serviceAccount: default
-      volumes:
-      - name: iso-share
-        hostPath:
-            path: /home/kni/acm/mirror_registry/image_place_holder
-      terminationGracePeriodSeconds: 5
