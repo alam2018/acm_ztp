@@ -6,7 +6,7 @@ metadata:
     app: imager-server
 spec:
 #  serviceAccount: sa-apache
-  serviceAccountName: sa-apache
+#  serviceAccountName: sa-apache
   replicas: 1
   selector:
     matchLabels:
