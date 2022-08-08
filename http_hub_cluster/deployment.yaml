@@ -17,8 +17,8 @@ spec:
       containers:
         - name: https
 #          image: "registry.redhat.io/rhscl/httpd-24-rhel7"
-#          image: "localhost/httpd:latest"
-          image: "docker.io/library/httpd:latest"
+          image: "localhost/http_iso:latest"
+#          image: "docker.io/library/httpd:latest"
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           tty: true
