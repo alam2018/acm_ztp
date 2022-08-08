@@ -9,7 +9,7 @@ spec:
   - name: httpd
     port: 777
     protocol: TCP
-    targetPort: 8080
+    targetPort: 80
   selector:
     app: imager-server
   sessionAffinity: None
