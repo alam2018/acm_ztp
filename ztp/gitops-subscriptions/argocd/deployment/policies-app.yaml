@@ -18,7 +18,7 @@ spec:
       recurse: true
     path: ztp/gitops-subscriptions/argocd/resource-hook-example/policygentemplates
     repoURL: https://github.com/alam2018/acm_ztp
-    targetRevision: master
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
