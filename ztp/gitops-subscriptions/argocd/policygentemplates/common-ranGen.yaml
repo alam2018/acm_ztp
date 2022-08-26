@@ -17,12 +17,14 @@ spec:
     # Create operators policies that will be installed in all clusters
     - fileName: SriovSubscription.yaml
       policyName: "sriov-sub-policy"
-      spec:
-        channel: "4.10"
+      # spec:
+        # channel: "4.10"
     - fileName: SriovSubscriptionNS.yaml
       policyName: "sriov-sub-policy"
     - fileName: SriovSubscriptionOperGroup.yaml
       policyName: "sriov-sub-policy"
+    - fileName: SriovOperatorStatus.yaml
+      policyName: "subscriptions-policy"
     # - fileName: PtpSubscription.yaml
       # policyName: "ptp-sub-policy"
       # spec:
@@ -36,14 +38,14 @@ spec:
       # spec:
       # # Changing the channel value will upgrade/downgrade the operator installed version.
         # channel: "4.10"
-    - fileName: PaoSubscriptionNS.yaml
-      policyName: "pao-sub-policy"
-    - fileName: PaoSubscriptionOperGroup.yaml
-      policyName: "pao-sub-policy"
-    - fileName: PaoSubscriptionCatalogSource.yaml
-      policyName: "pao-sub-policy"
-      spec:
-        image: quay.io/openshift-kni/performance-addon-operator-index:4.10-snapshot
+    # - fileName: PaoSubscriptionNS.yaml
+      # policyName: "pao-sub-policy"
+    # - fileName: PaoSubscriptionOperGroup.yaml
+      # policyName: "pao-sub-policy"
+    # - fileName: PaoSubscriptionCatalogSource.yaml
+      # policyName: "pao-sub-policy"
+      # spec:
+        # image: quay.io/openshift-kni/performance-addon-operator-index:4.10-snapshot
     # - fileName: ClusterLogOperGroup.yaml
       # policyName: "log-sub-policy"
     # - fileName: ClusterLogSubscription.yaml
@@ -81,7 +83,7 @@ spec:
         # - mirrors:
           # - registry.redhat.com:5000
           # source: registry.redhat.io
-    - fileName: OperatorHub.yaml
-      policyName: "oper-hub-policy"
-    - fileName: ReduceMonitoringFootprint.yaml
-      policyName: "mon-offload-policy"
+    # - fileName: OperatorHub.yaml
+      # policyName: "oper-hub-policy"
+    # - fileName: ReduceMonitoringFootprint.yaml
+      # policyName: "mon-offload-policy"

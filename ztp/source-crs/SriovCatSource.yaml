@@ -1,15 +1,15 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: CatalogSource
 metadata:
-    name: sriov-network-operator
-    namespace: openshift-marketplace
-    annotations:
-        target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+  name: sriov-network-operator
+  namespace: openshift-marketplace
+  annotations:
+    target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
 spec:
-    displayName: sriov-network-operator-connected
-    icon:
-        base64data: ""
-        mediatype: ""
-    image: $imageUrl
-    publisher: Red Hat
-    sourceType: grpc
+  displayName: sriov-network-operator-connected
+  icon:
+    base64data: ""
+    mediatype: ""
+  image: $imageUrl
+  publisher: Red Hat
+  sourceType: grpc
