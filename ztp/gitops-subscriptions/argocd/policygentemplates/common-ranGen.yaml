@@ -23,19 +23,19 @@ spec:
       policyName: "sriov-sub-policy"
     - fileName: SriovSubscriptionOperGroup.yaml
       policyName: "sriov-sub-policy"
-    - fileName: PtpSubscription.yaml
-      policyName: "ptp-sub-policy"
-      spec:
-        channel: "4.10"
-    - fileName: PtpSubscriptionNS.yaml
-      policyName: "ptp-sub-policy"
-    - fileName: PtpSubscriptionOperGroup.yaml
-      policyName: "ptp-sub-policy"
-    - fileName: PaoSubscription.yaml
-      policyName: "pao-sub-policy"
-      spec:
-      # Changing the channel value will upgrade/downgrade the operator installed version.
-        channel: "4.10"
+    # - fileName: PtpSubscription.yaml
+      # policyName: "ptp-sub-policy"
+      # spec:
+        # channel: "4.10"
+    # - fileName: PtpSubscriptionNS.yaml
+      # policyName: "ptp-sub-policy"
+    # - fileName: PtpSubscriptionOperGroup.yaml
+      # policyName: "ptp-sub-policy"
+    # - fileName: PaoSubscription.yaml
+      # policyName: "pao-sub-policy"
+      # spec:
+      # # Changing the channel value will upgrade/downgrade the operator installed version.
+        # channel: "4.10"
     - fileName: PaoSubscriptionNS.yaml
       policyName: "pao-sub-policy"
     - fileName: PaoSubscriptionOperGroup.yaml
@@ -44,18 +44,18 @@ spec:
       policyName: "pao-sub-policy"
       spec:
         image: quay.io/openshift-kni/performance-addon-operator-index:4.10-snapshot
-    - fileName: ClusterLogOperGroup.yaml
-      policyName: "log-sub-policy"
-    - fileName: ClusterLogSubscription.yaml
-      policyName: "log-sub-policy"
-    - fileName: StorageNS.yaml
-      policyName: "storage-sub-policy"
-    - fileName: StorageOperGroup.yaml
-      policyName: "storage-sub-policy"
-    - fileName: StorageSubscription.yaml
-      policyName: "storage-sub-policy"
-      spec:
-        channel: "4.10"
+    # - fileName: ClusterLogOperGroup.yaml
+      # policyName: "log-sub-policy"
+    # - fileName: ClusterLogSubscription.yaml
+      # policyName: "log-sub-policy"
+    # - fileName: StorageNS.yaml
+      # policyName: "storage-sub-policy"
+    # - fileName: StorageOperGroup.yaml
+      # policyName: "storage-sub-policy"
+    # - fileName: StorageSubscription.yaml
+      # policyName: "storage-sub-policy"
+      # spec:
+        # channel: "4.10"
     # These CRs are in support of installation from a disconnected registry
     # - fileName: ClusterLogCatSource.yaml
       # policyName: "log-sub-policy"
@@ -69,10 +69,11 @@ spec:
       # policyName: "storage-sub-policy"
       # spec:
         # image: registry.example.com:5000/olm/far-edge-lso:latest
-    # - fileName: SriovCatSource.yaml
-      # policyName: "sriov-sub-policy"
-      # spec:
-        # image: registry.example.com:5000/olm/far-edge-sriov:latest
+    - fileName: SriovCatSource.yaml
+      policyName: "sriov-sub-policy"
+      spec:
+#        image: registry.example.com:5000/olm/far-edge-sriov:latest
+        image: quay.io/openshift/origin-sriov-network-operator:4.10.0
     # - fileName: DisconnectedICSP.yaml
       # policyName: "disc-icsp-policy"
       # spec:
