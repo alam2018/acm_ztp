@@ -23,8 +23,8 @@ spec:
       policyName: "sriov-sub-policy"
     - fileName: SriovSubscriptionOperGroup.yaml
       policyName: "sriov-sub-policy"
-    # - fileName: SriovOperatorStatus.yaml
-      # policyName: "subscriptions-policy"
+    - fileName: SriovOperatorStatus.yaml
+      policyName: "subscriptions-policy"
     # - fileName: PtpSubscription.yaml
       # policyName: "ptp-sub-policy"
       # spec:
@@ -83,7 +83,7 @@ spec:
         # - mirrors:
           # - registry.redhat.com:5000
           # source: registry.redhat.io
-    - fileName: OperatorHub.yaml
-      policyName: "oper-hub-policy"
+    # - fileName: OperatorHub.yaml
+      # policyName: "oper-hub-policy"
     # - fileName: ReduceMonitoringFootprint.yaml
       # policyName: "mon-offload-policy"
