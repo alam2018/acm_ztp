@@ -3,8 +3,8 @@ apiVersion: operators.coreos.com/v1
 kind: Operator
 metadata:
   name: sriov-network-operator.openshift-sriov-network-operator
-  annotations:
-    ran.openshift.io/ztp-deploy-wave: "2"
+  # annotations:
+    # ran.openshift.io/ztp-deploy-wave: "2"
 status:
   components:
     refs:

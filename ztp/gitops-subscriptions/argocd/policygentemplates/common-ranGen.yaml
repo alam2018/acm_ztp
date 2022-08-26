@@ -23,8 +23,8 @@ spec:
       policyName: "sriov-sub-policy"
     - fileName: SriovSubscriptionOperGroup.yaml
       policyName: "sriov-sub-policy"
-    - fileName: SriovOperatorStatus.yaml
-      policyName: "subscriptions-policy"
+    # - fileName: SriovOperatorStatus.yaml
+      # policyName: "subscriptions-policy"
     # - fileName: PtpSubscription.yaml
       # policyName: "ptp-sub-policy"
       # spec:
