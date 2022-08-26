@@ -6,7 +6,10 @@ metadata:
     annotations:
         target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
 spec:
-    displayName: sriov-network-operator-disconnected
+    displayName: sriov-network-operator-connected
+    icon:
+        base64data: ""
+        mediatype: ""
     image: $imageUrl
     publisher: Red Hat
     sourceType: grpc
