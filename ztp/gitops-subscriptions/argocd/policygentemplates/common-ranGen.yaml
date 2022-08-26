@@ -83,7 +83,7 @@ spec:
         # - mirrors:
           # - registry.redhat.com:5000
           # source: registry.redhat.io
-    # - fileName: OperatorHub.yaml
-      # policyName: "oper-hub-policy"
+    - fileName: OperatorHub.yaml
+      policyName: "oper-hub-policy"
     # - fileName: ReduceMonitoringFootprint.yaml
       # policyName: "mon-offload-policy"
