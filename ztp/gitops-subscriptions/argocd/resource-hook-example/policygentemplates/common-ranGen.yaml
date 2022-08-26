@@ -69,10 +69,11 @@ spec:
       # policyName: "storage-sub-policy"
       # spec:
         # image: registry.example.com:5000/olm/far-edge-lso:latest
-    # - fileName: SriovCatSource.yaml
-      # policyName: "sriov-sub-policy"
-      # spec:
-        # image: registry.example.com:5000/olm/far-edge-sriov:latest
+    - fileName: SriovCatSource.yaml
+      policyName: "sriov-sub-policy"
+      spec:
+#        image: registry.example.com:5000/olm/far-edge-sriov:latest
+        image: quay.io/openshift/origin-sriov-network-operator:4.10.0
     # - fileName: DisconnectedICSP.yaml
       # policyName: "disc-icsp-policy"
       # spec:
