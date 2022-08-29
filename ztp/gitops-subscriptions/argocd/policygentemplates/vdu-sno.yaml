@@ -20,19 +20,19 @@ spec:
       metadata:
         name: "pci_sriov_net_f1u"
       spec:
-          resourceName: pci_sriov_net_f1u
-          nodeSelector:
-            node-role.kubernetes.io/master: ""
-          mtu: 1500
-          numVfs: 14
-          deviceType: netdevice
-          nicSelector:
-            vendor: "8086"
-            deviceID: "1593"
-            pfNames: ["ens2f1#6-9"]
-          priority: 10
-          isRdma: false
-          linkType: eth
+        resourceName: pci_sriov_net_f1u
+          # nodeSelector:
+            # node-role.kubernetes.io/master: ""
+        mtu: 1500
+        numVfs: 14
+        deviceType: netdevice
+        nicSelector:
+          vendor: "8086"
+          deviceID: "1593"
+          pfNames: ["ens2f1#6-9"]
+        priority: 10
+        isRdma: false
+        linkType: eth
     # - fileName: SriovNetworkNodePolicy.yaml
       # policyName: "sriov-nnp-fh-policy"
       # metadata:

@@ -15,3 +15,7 @@ spec:
   vlanQoS: ""
   trust: ""
   capabilities: ""
+  nicSelector:
+    vendor: ""
+    deviceID: ""
+    pfNames: [""]
