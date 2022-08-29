@@ -25,23 +25,22 @@ spec:
       policyName: "sriov-sub-policy"
     # - fileName: SriovOperatorStatus.yaml
       # policyName: "subscriptions-policy"
-    # - fileName: PtpSubscription.yaml
-      # policyName: "ptp-sub-policy"
-      # spec:
-        # channel: "4.10"
-    # - fileName: PtpSubscriptionNS.yaml
-      # policyName: "ptp-sub-policy"
-    # - fileName: PtpSubscriptionOperGroup.yaml
-      # policyName: "ptp-sub-policy"
-    # - fileName: PaoSubscription.yaml
-      # policyName: "pao-sub-policy"
-      # spec:
-      # # Changing the channel value will upgrade/downgrade the operator installed version.
-        # channel: "4.10"
-    # - fileName: PaoSubscriptionNS.yaml
-      # policyName: "pao-sub-policy"
-    # - fileName: PaoSubscriptionOperGroup.yaml
-      # policyName: "pao-sub-policy"
+    - fileName: PtpSubscription.yaml
+      policyName: "ptp-sub-policy"
+      spec:
+        channel: "4.10"
+    - fileName: PtpSubscriptionNS.yaml
+      policyName: "ptp-sub-policy"
+    - fileName: PtpSubscriptionOperGroup.yaml
+      policyName: "ptp-sub-policy"
+    - fileName: PaoSubscription.yaml
+      policyName: "pao-sub-policy"
+      spec:
+        channel: "4.10"
+    - fileName: PaoSubscriptionNS.yaml
+      policyName: "pao-sub-policy"
+    - fileName: PaoSubscriptionOperGroup.yaml
+      policyName: "pao-sub-policy"
     # - fileName: PaoSubscriptionCatalogSource.yaml
       # policyName: "pao-sub-policy"
       # spec:
