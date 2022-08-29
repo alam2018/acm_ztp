@@ -17,8 +17,8 @@ spec:
     # Create operators policies that will be installed in all clusters
     - fileName: SriovSubscription.yaml
       policyName: "sriov-sub-policy"
-      # spec:
-        # channel: "4.10"
+      spec:
+        channel: "4.10"
     - fileName: SriovSubscriptionNS.yaml
       policyName: "sriov-sub-policy"
     - fileName: SriovSubscriptionOperGroup.yaml
