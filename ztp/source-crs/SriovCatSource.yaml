@@ -7,9 +7,10 @@ metadata:
     target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
 spec:
   displayName: sriov-network-operator-connected
-  icon:
-    base64data: ""
-    mediatype: ""
-  image: $imageUrl
+  # icon:
+    # base64data: ""
+    # mediatype: ""
+  image: quay.io/openshift/origin-sriov-network-operator:4.10
+#  image: $imageUrl
   publisher: Red Hat
   sourceType: grpc
