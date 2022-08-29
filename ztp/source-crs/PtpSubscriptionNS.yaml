@@ -6,4 +6,5 @@ metadata:
   annotations:
     workload.openshift.io/allowed: management
   labels:
+    name: openshift-ptp
     openshift.io/cluster-monitoring: "true"

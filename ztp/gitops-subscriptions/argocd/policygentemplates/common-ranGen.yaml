@@ -28,7 +28,7 @@ spec:
     - fileName: PtpSubscription.yaml
       policyName: "ptp-sub-policy"
       spec:
-        channel: "4.10"
+        channel: "stable"
     - fileName: PtpSubscriptionNS.yaml
       policyName: "ptp-sub-policy"
     - fileName: PtpSubscriptionOperGroup.yaml
