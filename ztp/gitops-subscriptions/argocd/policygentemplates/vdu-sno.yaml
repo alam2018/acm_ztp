@@ -18,7 +18,7 @@ spec:
     - fileName: SriovNetwork.yaml
       policyName: "sriov-f1u-policy"
       metadata:
-        name: "pci_sriov_net_f1u"
+        name: "pci-sriov-net-f1u"
       spec:
         resourceName: pci_sriov_net_f1u
           # nodeSelector:
