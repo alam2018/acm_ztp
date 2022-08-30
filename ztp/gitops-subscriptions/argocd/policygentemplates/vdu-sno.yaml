@@ -153,36 +153,36 @@ spec:
         vlan: 10 
                 
         
-    # - fileName: PerformanceProfile.yaml
-      # policyName: "pao-profile-policy"
-      # metadata:
-        # name: performance
-      # spec:
-        # additionalKernelArgs:
-        # - nohz_full=5-11
-        # - rcupdate.rcu_normal_after_boot=0
-        # - idle=poll
-        # - intel_iommu=on iommu=pt
-        # cpu:
-        # #Used by application pods
-          # isolated: 6-79
-        # #Used by infra container
-          # reserved: 0-6
-        # globallyDisableIrqLoadBalancing: false
-        # hugepages:
-          # defaultHugepagesSize: 1G
-          # pages:
-            # - count: 32
-            # size: 1G
-        # machineConfigPoolSelector:
-            # pools.operator.machineconfiguration.openshift.io/master: ""
-        # nodeSelector:
-            # node-role.kubernetes.io/master: ""
-        # numa:
-            # topologyPolicy: single-numa-node
-        # realTimeKernel:
-    # #set it as true for 4.9.6+ to enable the rt kernel
-            # enabled: true
+    - fileName: PerformanceProfile.yaml
+      policyName: "pao-profile-policy"
+      metadata:
+        name: performance
+      spec:
+        additionalKernelArgs:
+        - "nohz_full=5-11"
+        - "rcupdate.rcu_normal_after_boot=0"
+        - "idle=poll"
+        - "intel_iommu=on iommu=pt"
+        cpu:
+        #Used by application pods
+          isolated: 6-70
+        #Used by infra container
+          reserved: 0-6
+        globallyDisableIrqLoadBalancing: "false"
+        hugepages:
+          defaultHugepagesSize: 1G
+          pages:
+            - size: 1G
+              count: 32              
+        machineConfigPoolSelector:
+            pools.operator.machineconfiguration.openshift.io/master: ""
+        nodeSelector:
+            node-role.kubernetes.io/master: ""
+        numa:
+            topologyPolicy: "single-numa-node"
+        realTimeKernel:
+    #set it as true for 4.9.6+ to enable the rt kernel
+            enabled: true
               
     # - fileName: TunedPerformancePatch.yaml
       # policyName: "tuned-perf-patch-policy"
