@@ -95,7 +95,7 @@ spec:
         
   #Create SRIOV network config
     - fileName: SriovNetwork.yaml
-      policyName: "sriov-f1c-config-policy"
+      policyName: "sriov-f1c-config"
       metadata:
         name: "networking-f1c"
       spec:
@@ -110,6 +110,49 @@ spec:
         vlan: 550
         linkState: auto
     
+    - fileName: SriovNetwork.yaml
+      policyName: "sriov-f1u-config"
+      metadata:
+        name: "networking-f1u"
+      spec:
+        ipam: |-
+          {
+            "type": "static",
+            "addresses": [{"address": "10.114.120.134/26", "gateway": "10.114.120.129"}]
+          }
+        capabilities: '{ "ips": true }'
+        resourceName: pci_sriov_net_f1
+        networkNamespace: vdu
+        vlan: 550
+        linkState: auto
+        
+        
+    - fileName: SriovNetwork.yaml
+      policyName: "sriov-llscu1-config"
+      metadata:
+        name: "networking-llscu1"
+      spec:
+        resourceName: pci_sriov_net_llscu1
+        networkNamespace: vdu
+        linkState: auto
+        spoofChk: "off"
+        
+    - fileName: SriovNetwork.yaml
+      policyName: "sriov-llsm1-config"
+      metadata:
+        name: "networking-llsm1"
+      spec:
+        ipam: |-
+          {
+            "type": "static"
+          }
+        capabilities: '{ "mac": true, "ips": true }'
+        resourceName: pci_sriov_net_llsm1
+        networkNamespace: vdu
+        linkState: auto
+        vlan: 10 
+        
+        
         
     # - fileName: SriovNetworkNodePolicy.yaml
       # policyName: "sriov-nnp-fh-policy"
