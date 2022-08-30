@@ -165,7 +165,7 @@ spec:
         - "intel_iommu=on iommu=pt"
         cpu:
         #Used by application pods
-          isolated: 6-70
+          isolated: 7-70
         #Used by infra container
           reserved: 0-6
         globallyDisableIrqLoadBalancing: "false"
