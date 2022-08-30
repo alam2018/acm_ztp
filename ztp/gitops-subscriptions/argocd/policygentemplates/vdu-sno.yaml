@@ -15,15 +15,15 @@ spec:
     sites: "gitopssno"
   mcp: "master"
   sourceFiles:
-    - fileName: SriovNetwork.yaml
-      policyName: "sriov-f1u-policy"
+    - fileName: SriovNetworkNodePolicy.yaml
+      policyName: "sriov-f1-policy"
       metadata:
-        name: "pci-sriov-net-f1u"
+        name: "pci-sriov-net-f1"
       spec:
-        resourceName: pci_sriov_net_f1u
+        resourceName: pci_sriov_net_f1
           # nodeSelector:
             # node-role.kubernetes.io/master: ""
-        mtu: 1500
+#        mtu: 1500
         numVfs: 14
         deviceType: netdevice
         nicSelector:
