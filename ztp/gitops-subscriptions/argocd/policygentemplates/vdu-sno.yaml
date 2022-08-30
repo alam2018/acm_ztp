@@ -94,7 +94,7 @@ spec:
         linkType: eth
         
   #Create SRIOV network config
-    - fileName: SriovNetworkNodePolicy.yaml
+    - fileName: SriovNetwork.yaml
       policyName: "sriov-f1c-config-policy"
       metadata:
         name: "networking-f1c"
