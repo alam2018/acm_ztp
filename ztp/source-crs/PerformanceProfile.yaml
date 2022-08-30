@@ -14,14 +14,15 @@ spec:
     pages:
       - size: $size
         count: $count
-        node: $node
+#        node: $node
   machineConfigPoolSelector:
     pools.operator.machineconfiguration.openshift.io/$mcp: ""
-  net:
-    userLevelNetworking: true
+  # net:
+    # userLevelNetworking: true
   nodeSelector:
     node-role.kubernetes.io/$mcp: ''
   numa:
     topologyPolicy: "restricted"
   realTimeKernel:
     enabled: true
+  globallyDisableIrqLoadBalancing: 

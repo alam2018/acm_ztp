@@ -151,53 +151,39 @@ spec:
         networkNamespace: vdu
         linkState: auto
         vlan: 10 
+                
         
-        
-        
-    # - fileName: SriovNetworkNodePolicy.yaml
-      # policyName: "sriov-nnp-fh-policy"
-      # metadata:
-        # name: "sriov-nnp-du-fh"
-      # spec:
-        # deviceType: netdevice
-        # isRdma: true
-        # nicSelector:
-          # pfNames: ["ens5f0"]
-        # numVfs: 8
-        # priority: 10
-        # resourceName: du_fh
-    # - fileName: SriovNetwork.yaml
-      # policyName: "sriov-nw-mh-policy"
-      # metadata:
-        # name: "sriov-nw-du-mh"
-      # spec:
-        # resourceName: du_mh
-        # vlan: 150
-    # - fileName: SriovNetworkNodePolicy.yaml
-      # policyName: "sriov-nnp-mh-policy"
-      # metadata:
-        # name: "sriov-nnp-du-mh"
-      # spec:
-        # deviceType: vfio-pci
-        # isRdma: false
-        # nicSelector:
-          # pfNames: ["ens7f0"]
-        # numVfs: 8
-        # priority: 10
-        # resourceName: du_mh
-    # - fileName: PerformanceProfile.yaml
-      # policyName: "perfprofile-policy"
-      # metadata:
-        # name: openshift-node-performance-profile
-      # spec:
-        # cpu:
-          # isolated: "2-19,22-39"
-          # reserved: "0-1,20-21"
-        # hugepages:
-          # defaultHugepagesSize: 1G
-          # pages:
-            # - size: 1G
-              # count: 32
+    - fileName: PerformanceProfile.yaml
+      policyName: "perfprofile-policy"
+      metadata:
+        name: performance
+        spec:
+          additionalKernelArgs:
+          - nohz_full=5-11
+          - rcupdate.rcu_normal_after_boot=0
+          - idle=poll
+          - intel_iommu=on iommu=pt
+          cpu:
+          #Used by application pods
+            isolated: 6-79
+            #Used by infra container
+            reserved: 0-6
+          globallyDisableIrqLoadBalancing: false
+          hugepages:
+            defaultHugepagesSize: 1G
+            pages:
+            - count: 32
+              size: 1G
+          machineConfigPoolSelector:
+            pools.operator.machineconfiguration.openshift.io/master: ""
+          nodeSelector:
+            node-role.kubernetes.io/master: ""
+          numa:
+            topologyPolicy: single-numa-node
+          realTimeKernel:
+        #set it as true for 4.9.6+ to enable the rt kernel
+            enabled: true
+              
     # - fileName: TunedPerformancePatch.yaml
       # policyName: "tuned-perf-patch-policy"
       # spec:
