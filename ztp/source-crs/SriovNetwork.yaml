@@ -15,4 +15,5 @@ spec:
   vlanQoS: ""
   trust: ""
   capabilities: ""
+  ipam:
 
