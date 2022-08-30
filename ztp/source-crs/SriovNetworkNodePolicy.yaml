@@ -10,8 +10,8 @@ spec:
   deviceType: $deviceType
   isRdma: $isRdma
   nicSelector:
-    vendor: ""
-    deviceID: ""
+    # vendor: ""
+    # deviceID: ""
     # The exact physical function name must match the hardware used    
     pfNames: [$pfNames]
   nodeSelector:

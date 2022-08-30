@@ -24,15 +24,73 @@ spec:
           # nodeSelector:
             # node-role.kubernetes.io/master: ""
 #        mtu: 1500
-        numVfs: 14
+        numVfs: 8
         deviceType: netdevice
         nicSelector:
-          vendor: "8086"
-          deviceID: "1593"
-          pfNames: ["ens2f1#6-9"]
+          # vendor: "8086"
+          # deviceID: "1593"
+          pfNames: ["ens1f0#6-9"]
         priority: 10
         isRdma: false
         linkType: eth
+        
+    - fileName: SriovNetworkNodePolicy.yaml
+      policyName: "sriov-llscm-policy"
+      metadata:
+        name: "pci-sriov-net-llsm1"
+      spec:
+        resourceName: pci_sriov_net_llsm1
+          # nodeSelector:
+            # node-role.kubernetes.io/master: ""
+#        mtu: 1500
+        numVfs: 8
+        deviceType: netdevice
+        nicSelector:
+          # vendor: "8086"
+          # deviceID: "1593"
+          pfNames: ["ens1f1#0-5"]
+        priority: 10
+        isRdma: false
+        linkType: eth
+        
+    - fileName: SriovNetworkNodePolicy.yaml
+      policyName: "sriov-llscu-policy"
+      metadata:
+        name: "pci-sriov-net-llscu1"
+      spec:
+        resourceName: pci_sriov_net_llscu1
+          # nodeSelector:
+            # node-role.kubernetes.io/master: ""
+#        mtu: 1500
+        numVfs: 8
+        deviceType: vfio-pci
+        nicSelector:
+          # vendor: "8086"
+          # deviceID: "1593"
+          pfNames: ["ens1f1#6-7"]
+        priority: 10
+        isRdma: false
+        linkType: eth
+      
+    - fileName: SriovNetworkNodePolicy.yaml
+      policyName: "sriov-oam-policy"
+      metadata:
+        name: "pci-sriov-net-oam"
+      spec:
+        resourceName: pci_sriov_net_oam
+          # nodeSelector:
+            # node-role.kubernetes.io/master: ""
+#        mtu: 1500
+        numVfs: 8
+        deviceType: netdevice
+        nicSelector:
+          # vendor: "8086"
+          # deviceID: "1593"
+          pfNames: ["ens1f0#6-7"]
+        priority: 10
+        isRdma: false
+        linkType: eth
+        
     # - fileName: SriovNetworkNodePolicy.yaml
       # policyName: "sriov-nnp-fh-policy"
       # metadata:
