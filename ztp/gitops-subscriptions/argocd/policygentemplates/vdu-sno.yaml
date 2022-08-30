@@ -154,7 +154,7 @@ spec:
                 
         
     - fileName: PerformanceProfile.yaml
-      policyName: "perfprofile-policy"
+      policyName: "pao-profile-policy"
       metadata:
         name: performance
         spec:
