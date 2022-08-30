@@ -29,7 +29,7 @@ spec:
         nicSelector:
           # vendor: "8086"
           # deviceID: "1593"
-          pfNames: ["ens1f0#6-9"]
+          pfNames: ["ens1f0#0-5"]
         priority: 10
         isRdma: false
         linkType: eth
