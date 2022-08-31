@@ -67,13 +67,11 @@ spec:
         
     #Create Openshift Data Foundation
     - fileName: DataFoundationOperGroup.yaml
-      policyName: "storage-sub-policy"
+      policyName: "datafoundation-sub-policy"
     - fileName: DataFoundationSubscriptionNS.yaml
-      policyName: "storage-sub-policy"
+      policyName: "datafoundation-sub-policy"
     - fileName: DataFoundationSubscription.yaml
-      policyName: "storage-sub-policy"
-      spec:
-        channel: "4.10"
+      policyName: "datafoundation-sub-policy"
     
     
     
