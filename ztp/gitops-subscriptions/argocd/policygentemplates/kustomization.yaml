@@ -6,3 +6,4 @@ resources:
 - lvm-policy.yaml
 # - group-du-sno-ranGen.yaml
 # - test-sno.yaml
+- ../policy
