@@ -5,3 +5,5 @@ generators:
 - sno_siteconfig.yaml  
 - image-pull-secret.yaml
 - bmc-secret.yaml
+- post-sync.yaml
+- pre-sync.yaml
