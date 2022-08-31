@@ -63,6 +63,20 @@ spec:
       policyName: "storage-sub-policy"
       spec:
         channel: "4.10"
+        
+        
+    #Create Openshift Data Foundation
+    - fileName: DataFoundationOperGroup.yaml
+      policyName: "datafoundation-sub-policy"
+    - fileName: DataFoundationSubscriptionNS.yaml
+      policyName: "datafoundation-sub-policy"
+    - fileName: DataFoundationSubscription.yaml
+      policyName: "datafoundation-sub-policy"
+      spec:
+        channel: "4.10"
+    
+    
+    
     # These CRs are in support of installation from a disconnected registry
     # - fileName: ClusterLogCatSource.yaml
       # policyName: "log-sub-policy"
