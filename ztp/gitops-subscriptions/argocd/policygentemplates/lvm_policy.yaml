@@ -1,0 +1,130 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+ name: lvm-policy-ns
+ 
+---
+
+# This policy verifies the installation of the official version of the OpenShift Data Foundation
+# Logical Volume Manager Operator on the managed clusters.
+# If set to "enforce" it installs the operator.
+# Used APIs: OLM, ODF-LVMO #https://github.com/operator-framework/operator-lifecycle-manager
+# https://github.com/red-hat-storage/lvm-operator
+
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+ annotations:
+   policy.open-cluster-management.io/categories: CM Configuration Management
+   policy.open-cluster-management.io/controls: CM-2 Baseline Configuration
+   policy.open-cluster-management.io/standards: NIST SP 800-53
+ name: policy-lvm-operator
+spec:
+ disabled: false
+ policy-templates:
+   - objectDefinition:
+       apiVersion: policy.open-cluster-management.io/v1
+       kind: ConfigurationPolicy
+       metadata:
+         name: policy-lvm-namespace
+       spec:
+         object-templates:
+           - complianceType: musthave
+             objectDefinition:
+               apiVersion: v1
+               kind: Namespace
+               metadata:
+                 name: openshift-storage
+                 labels:
+                   openshift.io/cluster-monitoring: "true"
+         remediationAction: inform
+         severity: high
+   - objectDefinition:
+       apiVersion: policy.open-cluster-management.io/v1
+       kind: ConfigurationPolicy
+       metadata:
+         name: policy-lvm-operator-operatorgroup
+       spec:
+         object-templates:
+           - complianceType: musthave
+             objectDefinition:
+               apiVersion: operators.coreos.com/v1alpha2
+               kind: OperatorGroup
+               metadata:
+                 name: openshift-storage-operatorgroup
+                 namespace: openshift-storage
+               spec:
+                 targetNamespaces:
+                   - openshift-storage
+         remediationAction: inform
+         severity: high
+   - objectDefinition:
+       apiVersion: policy.open-cluster-management.io/v1
+       kind: ConfigurationPolicy
+       metadata:
+         name: policy-lvm-operator-subscription
+       spec:
+         object-templates:
+           - complianceType: musthave
+             objectDefinition:
+               apiVersion: operators.coreos.com/v1alpha1
+               kind: Subscription
+               metadata:
+                 name: odf-lvm-operator
+                 namespace: openshift-storage
+               spec:
+                 channel: stable-4.10
+                 installPlanApproval: Automatic
+                 name: odf-lvm-operator
+                 source: redhat-operators
+                 sourceNamespace: openshift-marketplace
+                 startingCSV: odf-lvm-operator.v4.10.0
+         remediationAction: inform
+         severity: high
+   - objectDefinition:
+       apiVersion: policy.open-cluster-management.io/v1
+       kind: ConfigurationPolicy
+       metadata:
+         name: policy-lvmcluster
+       spec:
+         object-templates:
+           - complianceType: musthave
+             objectDefinition:
+               apiVersion: lvm.topolvm.io/v1alpha1
+               kind: LVMCluster
+               metadata:
+                 name: lvmcluster-sample
+                 namespace: openshift-storage
+               spec:
+                 storage:
+                   deviceClasses:
+                   - name: vg1
+ remediationAction: enforce
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+ name: binding-policy-lvm-operator
+placementRef:
+ apiGroup: apps.open-cluster-management.io
+ kind: PlacementRule
+ name: placement-policy-lvm-operator
+subjects:
+ - apiGroup: policy.open-cluster-management.io
+   kind: Policy
+   name: policy-lvm-operator
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+ name: placement-policy-lvm-operator
+spec:
+ clusterConditions:
+   - status: 'True'
+     type: ManagedClusterConditionAvailable
+ clusterSelector:
+   matchExpressions:
+     - key: group-du-sno
+       operator: In
+       values:
+         - group-du

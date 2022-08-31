@@ -25,7 +25,7 @@ spec:
     clusterProfile: du
     clusterLabels:
         common: true
-        group-du-sno: ""
+        group-du-sno: "group-du"
         sites: gitopssno
     clusterNetwork:
       - cidr: 10.128.0.0/14
