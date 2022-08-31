@@ -1,5 +1,6 @@
 {
   "spec": {
+    "configManagementPlugins": "- name: kustomize-with-local-plugins\n generate:\n command: [\"sh\", \"-c\"]\n args: [\"XDG_CONFIG_HOME=./ kustomize build --enable-alpha-plugins\"]\n",
     "controller": {
       "resources": {
         "limits": {
@@ -23,8 +24,7 @@
       ],
       "initContainers": [
         {
-          "resources": {
-          },
+          "resources": {},
           "terminationMessagePath": "/dev/termination-log",
           "name": "kustomize-plugin",
           "command": [
