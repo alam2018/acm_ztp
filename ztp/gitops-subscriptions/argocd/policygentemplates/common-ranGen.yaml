@@ -54,15 +54,15 @@ spec:
     # - fileName: ClusterLogSubscription.yaml
       # policyName: "log-sub-policy"
       
-    #Create Storage
-    # - fileName: StorageNS.yaml
-      # policyName: "storage-sub-policy"
-    # - fileName: StorageOperGroup.yaml
-      # policyName: "storage-sub-policy"
-    # - fileName: StorageSubscription.yaml
-      # policyName: "storage-sub-policy"
-      # spec:
-        # channel: "4.10"
+#    Create Storage
+    - fileName: StorageNS.yaml
+      policyName: "storage-sub-policy"
+    - fileName: StorageOperGroup.yaml
+      policyName: "storage-sub-policy"
+    - fileName: StorageSubscription.yaml
+      policyName: "storage-sub-policy"
+      spec:
+        channel: "4.10"
         
         
     # #Create Openshift Data Foundation
