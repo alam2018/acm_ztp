@@ -6,6 +6,6 @@ metadata:
 spec:
   channel: "stable-4.10" # <-- Channel should be modified depending on the OCS version to be installed. Please ensure to maintain compatibility with OCP version
   installPlanApproval: Automatic
-  name: odf-operator
+  name: odf-lvm-operator
   source: redhat-operators  # <-- Modify the name of the redhat-operators catalogsource if not default
   sourceNamespace: openshift-marketplace
