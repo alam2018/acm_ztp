@@ -18,11 +18,11 @@ spec:
   
   #Create Openshift Data Foundation
     - fileName: DataFoundationOperGroup.yaml
-      policyName: "storage-sub-policy"
+      policyName: "lvm-sub-policy"
     - fileName: DataFoundationSubscriptionNS.yaml
-      policyName: "storage-sub-policy"
+      policyName: "lvm-sub-policy"
     - fileName: DataFoundationSubscription.yaml
-      policyName: "storage-sub-policy"
+      policyName: "lvm-sub-policy"
   
   
   #Create SRIOV policies
