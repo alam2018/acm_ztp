@@ -16,6 +16,15 @@ spec:
   mcp: "master"
   sourceFiles:
   
+  #Create Openshift Data Foundation
+    - fileName: DataFoundationOperGroup.yaml
+      policyName: "storage-sub-policy"
+    - fileName: DataFoundationSubscriptionNS.yaml
+      policyName: "storage-sub-policy"
+    - fileName: DataFoundationSubscription.yaml
+      policyName: "storage-sub-policy"
+  
+  
   #Create SRIOV policies
     - fileName: SriovNetworkNodePolicy.yaml
       policyName: "sriov-f1-policy"
