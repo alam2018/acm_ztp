@@ -16,9 +16,9 @@ spec:
   mcp: "master"
   sourceFiles:
   
-  #Create Local Storage Localvolume
-    - fileName: local-storage-local-volume.yaml
-      policyName: "localvolume-config-policy"
+  # #Create Local Storage Localvolume
+    # - fileName: local-storage-local-volume.yaml
+      # policyName: "localvolume-config-policy"
   
   
   #Create SRIOV policies
