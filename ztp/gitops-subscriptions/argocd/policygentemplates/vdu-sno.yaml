@@ -16,13 +16,13 @@ spec:
   mcp: "master"
   sourceFiles:
   
-  #Create Openshift Data Foundation
-    - fileName: DataFoundationOperGroup.yaml
-      policyName: "lvm-sub-policy"
-    - fileName: DataFoundationSubscriptionNS.yaml
-      policyName: "lvm-sub-policy"
-    - fileName: DataFoundationSubscription.yaml
-      policyName: "lvm-sub-policy"
+  # #Create Openshift Data Foundation
+    # - fileName: DataFoundationOperGroup.yaml
+      # policyName: "lvm-sub-policy"
+    # - fileName: DataFoundationSubscriptionNS.yaml
+      # policyName: "lvm-sub-policy"
+    # - fileName: DataFoundationSubscription.yaml
+      # policyName: "lvm-sub-policy"
   
   
   #Create SRIOV policies
