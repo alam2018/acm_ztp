@@ -3,4 +3,4 @@ kind: Kustomization
 
 resources:
 
-  - lvm_policy.yaml
+#  - lvm_policy.yaml
