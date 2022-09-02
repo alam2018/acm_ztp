@@ -3,7 +3,7 @@ set -x
 
 SCRIPTDIR=$(dirname $(realpath "${BASH_SOURCE[0]}"))
 
-oc delete -k $SCRIPTDIR/ztp/gitops-subscriptions/argocd/deployment/ --force
+oc delete -k $SCRIPTDIR/ztp/gitops-subscriptions/argocd/deployment/
 
 oc delete -f $SCRIPTDIR/ztp/gitops-subscriptions/argocd/policy/lvm_policy.yaml
 
