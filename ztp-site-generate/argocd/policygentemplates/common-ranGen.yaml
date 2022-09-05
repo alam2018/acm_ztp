@@ -1,0 +1,106 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: common
+  labels:
+    name: common
+---
+apiVersion: ran.openshift.io/v1
+kind: PolicyGenTemplate
+metadata:
+  name: "common"
+  namespace: "common"
+spec:
+  bindingRules:
+    common: "true"
+  sourceFiles:
+    # Create SRIOV
+    - fileName: SriovSubscription.yaml
+      policyName: "sriov-sub-policy"
+      spec:
+        channel: "4.10"
+    - fileName: SriovSubscriptionNS.yaml
+      policyName: "sriov-sub-policy"
+    - fileName: SriovSubscriptionOperGroup.yaml
+      policyName: "sriov-sub-policy"
+
+    #Create PTP  
+    - fileName: PtpSubscription.yaml
+      policyName: "ptp-sub-policy"
+      spec:
+        channel: "stable"
+    - fileName: PtpSubscriptionNS.yaml
+      policyName: "ptp-sub-policy"
+    - fileName: PtpSubscriptionOperGroup.yaml
+      policyName: "ptp-sub-policy"
+      
+    #Create PAO
+    - fileName: PaoSubscription.yaml
+      policyName: "pao-sub-policy"
+      spec:
+        channel: "4.10"
+    - fileName: PaoSubscriptionNS.yaml
+      policyName: "pao-sub-policy"
+    - fileName: PaoSubscriptionOperGroup.yaml
+      policyName: "pao-sub-policy"
+    - fileName: PaoSubscriptionCatalogSource.yaml
+      policyName: "pao-sub-policy"
+      spec:
+        image: quay.io/openshift-kni/performance-addon-operator-index:4.10-snapshot
+        
+    #Create log operator
+    # - fileName: ClusterLogOperGroup.yaml
+      # policyName: "log-sub-policy"
+    # - fileName: ClusterLogSubscription.yaml
+      # policyName: "log-sub-policy"
+      
+#    Create Storage
+    - fileName: StorageNS.yaml
+      policyName: "storage-sub-policy"
+    - fileName: StorageOperGroup.yaml
+      policyName: "storage-sub-policy"
+    - fileName: StorageSubscription.yaml
+      policyName: "storage-sub-policy"
+      spec:
+        channel: "4.10"
+        
+        
+    # #Create Openshift Data Foundation
+    # - fileName: DataFoundationOperGroup.yaml
+      # policyName: "storage-sub-policy"
+    # - fileName: DataFoundationSubscriptionNS.yaml
+      # policyName: "storage-sub-policy"
+    # - fileName: DataFoundationSubscription.yaml
+      # policyName: "storage-sub-policy"
+    
+    
+    
+    # These CRs are in support of installation from a disconnected registry
+    # - fileName: ClusterLogCatSource.yaml
+      # policyName: "log-sub-policy"
+      # spec:
+        # image: registry.example.com:5000/olm/far-edge-clo:latest
+    # - fileName: PtpCatSource.yaml
+      # policyName: "ptp-sub-policy"
+      # spec:
+        # image: registry.example.com:5000/olm/far-edge-ptp:latest
+    # - fileName: StorageCatSource.yaml
+      # policyName: "storage-sub-policy"
+      # spec:
+        # image: registry.example.com:5000/olm/far-edge-lso:latest
+    # - fileName: SriovCatSource.yaml
+      # policyName: "sriov-sub-policy"
+      # spec:
+# #        image: registry.example.com:5000/olm/far-edge-sriov:latest
+        # image: quay.io/openshift/origin-sriov-network-operator:4.10
+    # - fileName: DisconnectedICSP.yaml
+      # policyName: "disc-icsp-policy"
+      # spec:
+        # repositoryDigestMirrors:
+        # - mirrors:
+          # - registry.redhat.com:5000
+          # source: registry.redhat.io
+    # - fileName: OperatorHub.yaml
+      # policyName: "oper-hub-policy"
+    # - fileName: ReduceMonitoringFootprint.yaml
+      # policyName: "mon-offload-policy"

@@ -11,6 +11,3 @@ spec:
     image: $imageUrl
     publisher: Red Hat
     sourceType: grpc
-    updateStrategy:
-        registryPoll:
-            interval: 1h

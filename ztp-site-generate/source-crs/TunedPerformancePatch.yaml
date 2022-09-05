@@ -8,14 +8,12 @@ metadata:
 spec:
   profile:
     - name: performance-patch
-      # The 'include' line must match the associated PerformanceProfile name, following below pattern
-      # include=openshift-node-performance-${PerformanceProfile.metadata.name}
-
-      # The 'cmdline_crash' CPU set must match the 'isolated' set in the associated PerformanceProfile
+      # The 'include' line must match the associated PerformanceProfile name
+      # And the cmdline_crash CPU set must match the 'isolated' set in the associated PerformanceProfile
       data: |
         [main]
         summary=Configuration changes profile inherited from performance created tuned
-        include=openshift-node-performance-openshift-node-performance-profile
+        include=openshift-node-performance-${performance-profile-name}
         [bootloader]
         cmdline_crash=nohz_full=${isolated_cores}
         [sysctl]
@@ -24,7 +22,6 @@ spec:
         group.ice-ptp=0:f:10:*:ice-ptp.*
         [service]
         service.stalld=start,enable
-        service.chronyd=stop,disable
   recommend:
     - machineConfigLabels:
         machineconfiguration.openshift.io/role: "$mcp"

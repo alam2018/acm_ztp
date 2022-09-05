@@ -1,0 +1,71 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+ annotations:
+   policy.open-cluster-management.io/categories: CM Configuration Management
+   policy.open-cluster-management.io/controls: CM-2 Baseline Configuration
+   policy.open-cluster-management.io/standards: NIST SP 800-53
+ name: policy-ls-localvolume
+spec:
+ disabled: false
+ policy-templates:
+
+   - objectDefinition:
+       apiVersion: policy.open-cluster-management.io/v1
+       kind: ConfigurationPolicy
+       metadata:
+         name: policy-local-storage-localvolume-config
+       spec:
+         object-templates:
+           - complianceType: musthave
+             objectDefinition:
+               apiVersion: local.storage.openshift.io/v1
+               kind: LocalVolume
+               metadata:
+                 name: "local-disks"
+                 namespace: "openshift-local-storage" 
+               spec:
+                 nodeSelector: 
+                    nodeSelectorTerms:
+                    - matchExpressions:
+                        - key: kubernetes.io/hostname
+                          operator: In
+                          values:
+#                          - acm-demo-hub-master
+                 storageClassDevices:
+                    - storageClassName: "local-sc" 
+                      volumeMode: Filesystem 
+                      fsType: xfs 
+                      devicePaths: 
+                        - /dev/sdb
+         remediationAction: inform
+         severity: high
+ remediationAction: enforce
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+ name: binding-policy-ls-localvolume
+placementRef:
+ apiGroup: apps.open-cluster-management.io
+ kind: PlacementRule
+ name: placement-policy-ls-localvolume
+subjects:
+ - apiGroup: policy.open-cluster-management.io
+   kind: Policy
+   name: policy-ls-localvolume
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+ name: placement-policy-ls-localvolume
+spec:
+ clusterConditions:
+   - status: 'True'
+     type: ManagedClusterConditionAvailable
+ clusterSelector:
+   matchExpressions:
+     - key: sites
+       operator: In
+       values:
+         - gitopssno

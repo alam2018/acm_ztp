@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: policies-sub
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: policies
+  namespace: openshift-gitops
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: policies-sub
+  project: default
+  source:
+    directory:
+      recurse: true
+    path: ztp/gitops-subscriptions/argocd/policygentemplates
+#    path: ztp/gitops-subscriptions/argocd/resource-hook-example/policygentemplates/
+    repoURL: https://github.com/alam2018/acm_ztp
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+

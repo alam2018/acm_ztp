@@ -4,8 +4,8 @@ apiVersion: machineconfiguration.openshift.io/v1
 kind: MachineConfig
 metadata:
   labels:
-    machineconfiguration.openshift.io/role: master
-  name: 04-accelerated-container-startup-master
+    machineconfiguration.openshift.io/role: worker
+  name: 04-accelerated-container-startup-worker
 spec:
   config:
     ignition:
