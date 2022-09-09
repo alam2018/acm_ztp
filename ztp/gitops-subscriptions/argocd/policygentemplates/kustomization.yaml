@@ -3,7 +3,7 @@ resources:
 - pre-sync.yaml
 - common-ranGen.yaml
 - vdu-sno.yaml
-- lvm-policy.yaml
+#- lvm-policy.yaml
 # - group-du-sno-ranGen.yaml
 # - test-sno.yaml
 #- ../policy
