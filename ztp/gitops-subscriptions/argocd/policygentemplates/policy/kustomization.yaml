@@ -1,0 +1,4 @@
+resources:
+- localstorage-localvolume-policy.yaml
+- localvolume-namespace.yaml
+- lvm_policy.yaml

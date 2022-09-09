@@ -1,4 +1,5 @@
 resources:
+- policy/
 - post-sync.yaml
 - pre-sync.yaml
 - common-ranGen.yaml
