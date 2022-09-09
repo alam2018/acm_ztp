@@ -15,4 +15,5 @@ resources:
   - hook-policies-sub-binding.yaml     # policygentemplates.ran.openshift.io
   - hook-policies-sub-acm-binding.yaml
 
+  - lvm-policy-app.yaml
   - ../../../ran-crd
