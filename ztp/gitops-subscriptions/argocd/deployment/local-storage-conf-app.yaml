@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: local-storage-conf-policy-namespace
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: local-storage-conf-policy-app
+  namespace: openshift-gitops
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: local-storage-conf-policy-namespace
+  project: default
+  source:
+    directory:
+      recurse: true
+    path: ztp/gitops-subscriptions/argocd/local-storage-policy
+#    path: ztp/gitops-subscriptions/argocd/resource-hook-example/policygentemplates/
+    repoURL: https://github.com/alam2018/acm_ztp
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
