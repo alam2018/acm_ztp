@@ -25,13 +25,13 @@ spec:
                  name: "local-disks"
                  namespace: "openshift-local-storage" 
                spec:
-                 nodeSelector: 
-                    nodeSelectorTerms:
-                    - matchExpressions:
-                        - key: kubernetes.io/hostname
-                          operator: In
-                          values:
-#                          - acm-demo-hub-master
+                 # nodeSelector: 
+                    # nodeSelectorTerms:
+                    # - matchExpressions:
+                        # - key: kubernetes.io/hostname
+                          # operator: In
+                          # values:
+# #                          - acm-demo-hub-master
                  storageClassDevices:
                     - storageClassName: "local-sc" 
                       volumeMode: Filesystem 
