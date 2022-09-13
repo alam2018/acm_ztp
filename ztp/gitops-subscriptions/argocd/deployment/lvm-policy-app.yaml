@@ -11,7 +11,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: lvm-policy-ns
+    namespace: lvm-operator-system
   project: default
   source:
     directory:
