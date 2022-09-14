@@ -1,0 +1,25 @@
+apiVersion: extensions.hive.openshift.io/v1beta1
+kind: AgentClusterInstall
+metadata:
+  # Only include the annotation if using OVN, otherwise omit the annotation
+  annotations:
+    agent-install.openshift.io/install-config-overrides: '{"networking":{"networkType":"OVNKubernetes"}}'
+  name: acmsno
+  namespace: acmsno
+spec:
+  clusterDeploymentRef:
+    name: acmsno
+  imageSetRef:
+    name: openshift-4.10.0 
+  networking:
+    clusterNetwork:
+    - cidr: 10.128.0.0/14 
+      hostPrefix: 23
+    machineNetwork:
+    - cidr: 10.20.0.0/24 
+    serviceNetwork:
+    - 172.30.0.0/16 
+  provisionRequirements:
+    controlPlaneAgents: 1
+    workerAgents: 0
+  sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDMSDlK2OVXUyW8kWolKJu9YoPdjRQWXLrorUf5foh2fQXmPLea1DdKHEBZocl8dub6mWiFF+t0wrJXYEfO9aDZHzIs8dzryxL7lkp7p+PzU7cxa7eRNBfrQOYIoWRakhXQoYKGD65ACOoeYc1zrHGYfXLxHnFrWjWVMUwDwYPzOMeITIT30Kt3kwdcDkZObT7Vbr9FhFGgIcZ0Ad7xq/YLi0vrD/ZS4BzOVfjP1Jdieysu4D8HoMsDgneG5qfJ/NtJUClvNdam0HFPPx9dxCf/oSRzvGnanbG5BGR2Gavw3cFJTaAiuNvXkK/Up32kD4jjkYV2Wae+u/pnchjpYN7GEOn1Q2aGcFLzjJPCoTxtN4QwvVRftrajDttO3lShgeU7fGSgXEzU4CeZGn74C+ZghZK2nhSOrPnZK/LnQhBNTyli5oU24AqWESiv1itADcfkSZiIcM1WBhRII7qAwfPzj0A2ITfwO+k3i/1xZBsiL1JsvW7NxY8/riRo9jjAnFE= kni@acm-provisioner 

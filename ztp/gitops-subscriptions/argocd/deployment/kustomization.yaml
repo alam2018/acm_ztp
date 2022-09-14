@@ -17,4 +17,8 @@ resources:
 
   - lvm-policy-app.yaml
   - local-storage-conf-app.yaml
+  
+  
+  - 01_ClusterImageSet.yaml
+  - 05_AgentClusterInstall.yaml
   - ../../../ran-crd
