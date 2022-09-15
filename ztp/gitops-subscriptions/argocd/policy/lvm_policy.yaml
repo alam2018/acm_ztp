@@ -331,7 +331,7 @@ spec:
                  name: odf-lvm-operator
                  namespace: lvm-operator-system
                spec:
-                 channel: "stable-4.10"
+                 channel: "stable-4.11"
                  installPlanApproval: Automatic
                  name: odf-lvm-operator
                  source: redhat-operators

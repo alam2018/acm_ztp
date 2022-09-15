@@ -18,7 +18,7 @@ spec:
     - fileName: SriovSubscription.yaml
       policyName: "sriov-sub-policy"
       spec:
-        channel: "4.10"
+        channel: "stable"
     - fileName: SriovSubscriptionNS.yaml
       policyName: "sriov-sub-policy"
     - fileName: SriovSubscriptionOperGroup.yaml
@@ -62,7 +62,7 @@ spec:
     - fileName: StorageSubscription.yaml
       policyName: "storage-sub-policy"
       spec:
-        channel: "4.10"
+        channel: "stable"
         
         
     # #Create Openshift Data Foundation
