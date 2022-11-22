@@ -14,7 +14,7 @@ spec:
     namespace: clusters-sub
   project: ztp-app-project
   source:
-    path: ztp-test/argocd/siteconfig/
+    path: out/argocd/siteconfig/
     repoURL: https://github.com/alam2018/acm_ztp
     targetRevision: HEAD
     # uncomment the below plugin if you will be adding the plugin binaries in the same repo->dir where
