@@ -6,5 +6,5 @@ generators:
 #- example-3node.yaml
 #- example-standard.yaml
 - sno_siteconfig.yaml
-#- image-pull-secret.yaml
-#- bmc-secret.yaml
+- image-pull-secret.yaml
+- bmc-secret.yaml
