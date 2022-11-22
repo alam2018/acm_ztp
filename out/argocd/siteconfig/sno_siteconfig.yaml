@@ -21,11 +21,12 @@ spec:
   clusters:
   - clusterName: "gitopssno"
     networkType: "OVNKubernetes"
-    clusterType: sno
-    clusterProfile: du
+#    clusterType: sno
+#    clusterProfile: du
     clusterLabels:
         common: true
-        group-du-sno: "group-du"
+#        group-du-sno: "group-du"
+        group-du-sno: ""
         sites: gitopssno
     clusterNetwork:
       - cidr: 10.128.0.0/14
