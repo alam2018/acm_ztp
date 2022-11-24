@@ -26,25 +26,25 @@ spec:
       policyName: "subscriptions-policy"
     - fileName: PtpOperatorStatus.yaml
       policyName: "subscriptions-policy"
-    - fileName: ClusterLogNS.yaml
-      policyName: "subscriptions-policy"
-    - fileName: ClusterLogOperGroup.yaml
-      policyName: "subscriptions-policy"
-    - fileName: ClusterLogSubscription.yaml
-      policyName: "subscriptions-policy"
-    - fileName: ClusterLogOperatorStatus.yaml
-      policyName: "subscriptions-policy"
-    - fileName: StorageNS.yaml
-      policyName: "subscriptions-policy"
-    - fileName: StorageOperGroup.yaml
-      policyName: "subscriptions-policy"
-    - fileName: StorageSubscription.yaml
-      policyName: "subscriptions-policy"
-    - fileName: StorageOperatorStatus.yaml
-      policyName: "subscriptions-policy"
-    - fileName: ReduceMonitoringFootprint.yaml
-      policyName: "config-policy"
-    #
+    # - fileName: ClusterLogNS.yaml
+      # policyName: "subscriptions-policy"
+    # - fileName: ClusterLogOperGroup.yaml
+      # policyName: "subscriptions-policy"
+    # - fileName: ClusterLogSubscription.yaml
+      # policyName: "subscriptions-policy"
+    # - fileName: ClusterLogOperatorStatus.yaml
+      # policyName: "subscriptions-policy"
+    # - fileName: StorageNS.yaml
+      # policyName: "subscriptions-policy"
+    # - fileName: StorageOperGroup.yaml
+      # policyName: "subscriptions-policy"
+    # - fileName: StorageSubscription.yaml
+      # policyName: "subscriptions-policy"
+    # - fileName: StorageOperatorStatus.yaml
+      # policyName: "subscriptions-policy"
+    # - fileName: ReduceMonitoringFootprint.yaml
+      # policyName: "config-policy"
+    # #
     # These CRs are in support of installation from a disconnected registry
     #
     # - fileName: OperatorHub.yaml
