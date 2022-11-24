@@ -43,6 +43,21 @@ spec:
           logs:
             type: "fluentd"
             fluentd: {}
+    # The setting below overrides the default "worker" selector predefined in
+    # the source-crs. The change is recommended on SNOs configured with PTP 
+    # event notification for forward compatibility with possible SNO expansion.
+    # When the default setting is left intact, then in case of an SNO 
+    # expansion with one or more workers, PTP operator
+    # would not create linuxptp-daemon containers on the worker node(s). Any
+    # attempt to change the daemonsetNodeSelector will result in ptp daemon
+    # restart and time synchronization loss.
+    # After complying with the policy, complianceType can be set to a safer "musthave"
+    # - fileName: PtpOperatorConfigForEvent.yaml
+    #   policyName: "config-policy"
+    #   complianceType: mustonlyhave
+    #   spec:
+    #     daemonNodeSelector:
+    #       node-role.kubernetes.io/worker: ""
     - fileName: PtpConfigSlave.yaml   # Change to PtpConfigSlaveCvl.yaml for ColumbiaVille NIC
       policyName: "config-policy"
       metadata:
@@ -56,7 +71,14 @@ spec:
           phc2sysOpts: "-a -r -n 24"
     - fileName: SriovOperatorConfig.yaml
       policyName: "config-policy"
+      # For existing clusters with node selector set as "master", 
+      # change the complianceType to "mustonlyhave".
+      # After complying with the policy, the complianceType can 
+      # be reverted to "musthave"
+      complianceType: musthave
       spec:
+        configDaemonNodeSelector:
+          node-role.kubernetes.io/worker: ""
         disableDrain: true
     - fileName: StorageLV.yaml
       policyName: "config-policy"
@@ -134,3 +156,31 @@ spec:
 #            claim: "image-registry-pvc"
 #     ---- sources needed for image registry ends here ----
 
+#    --- sources needed for updating CRI-O workload-partitioning ----
+#      more info here: on the base64 content https://docs.openshift.com/container-platform/4.11/scalability_and_performance/sno-du-enabling-workload-partitioning-on-single-node-openshift.html
+#    - fileName: MachineConfigGeneric.yaml
+#      policyName: "config-policy"
+#      complianceType: mustonlyhave # This is to update array entry as opposed to appending a new entry.
+#      metadata:
+#        name: 02-master-workload-partitioning
+#      spec:
+#        config:
+#          storage:
+#            files:
+#              - contents:
+#                  # crio cpuset config goes below. This value needs to updated and matched PerformanceProfile. Check the link for more info on the content.
+#                  source: data:text/plain;charset=utf-8;base64,W2NyaW8ucnVudGltZS53b3JrbG9hZHMubWFuYWdlbWVudF0KYWN0aXZhdGlvbl9hbm5vdGF0aW9uID0gInRhcmdldC53b3JrbG9hZC5vcGVuc2hpZnQuaW8vbWFuYWdlbWVudCIKYW5ub3RhdGlvbl9wcmVmaXggPSAicmVzb3VyY2VzLndvcmtsb2FkLm9wZW5zaGlmdC5pbyIKcmVzb3VyY2VzID0geyAiY3B1c2hhcmVzIiA9IDAsICJjcHVzZXQiID0gIjAtMSwyLTMiIH0=
+#                mode: 420
+#                overwrite: true
+#                path: /etc/crio/crio.conf.d/01-workload-partitioning
+#                user:
+#                  name: root
+#              - contents:
+#                  # openshift cpuset config goes below. This value needs to be updated and matched with crio cpuset (array entry above this). Check the link for more info on the content.
+#                  source: data:text/plain;charset=utf-8;base64,ewogICJtYW5hZ2VtZW50IjogewogICAgImNwdXNldCI6ICIwLTEsNTItNTMiCiAgfQp9Cg==
+#                mode: 420
+#                overwrite: true
+#                path: /etc/kubernetes/openshift-workload-pinning
+#                user:
+#                  name: root
+#     ---- sources needed for updating CRI-O workload-partitioning ends here ----
