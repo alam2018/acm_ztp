@@ -1,0 +1,39 @@
+apiVersion: agent-install.openshift.io/v1beta1
+kind: AgentServiceConfig
+metadata:
+ name: agent
+# namespace: open-cluster-management
+# namespace: assisted-installer
+ # namespace: open-cluster-management
+ # annotations:
+   # unsupported.agent-install.openshift.io/assisted-service-configmap: "assisted-service-config"
+spec:
+  databaseStorage:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 40Gi
+  filesystemStorage:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 40Gi
+        
+  imageStorage:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 60Gi
+  osImages: 
+#    - openshiftVersion: "4.10" 
+    - openshiftVersion: "4.11" 
+#      version: "410.84.202202251620-0" 
+      version: "411.86.202209061556-0"
+#      url: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.10/4.10.3/rhcos-4.10.3-x86_64-live.x86_64.iso" 
+#      rootFSUrl: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.10/4.10.3/rhcos-4.10.3-x86_64-live-rootfs.x86_64.img" 
+      url: "https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rhcos/4.11/4.11.2/rhcos-4.11.2-x86_64-live.x86_64.iso"
+      rootFSUrl: "https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rhcos/4.11/4.11.2/rhcos-live-rootfs.x86_64.img"
+      cpuArchitecture: "x86_64"
