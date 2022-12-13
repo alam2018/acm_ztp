@@ -10,11 +10,19 @@ spec:
     common: "true"
   sourceFiles:
     # Create operators policies that will be installed in all clusters
-    - fileName: SriovSubscription.yaml
+    # - fileName: SriovSubscription.yaml
+      # policyName: "subscriptions-policy"
+    # - fileName: SriovSubscriptionNS.yaml
+      # policyName: "subscriptions-policy"
+    # - fileName: SriovSubscriptionOperGroup.yaml
+      # policyName: "subscriptions-policy"
+    - fileName: StorageLVMOSubscriptionNS.yaml
       policyName: "subscriptions-policy"
-    - fileName: SriovSubscriptionNS.yaml
+    - fileName: StorageLVMOSubscriptionOperGroup.yaml
       policyName: "subscriptions-policy"
-    - fileName: SriovSubscriptionOperGroup.yaml
+    - fileName: StorageLVMOSubscription.yaml
+      policyName: "subscriptions-policy"
+    - fileName: StorageOperatorStatus.yaml
       policyName: "subscriptions-policy"
     # - fileName: SriovOperatorStatus.yaml
       # policyName: "subscriptions-policy"
