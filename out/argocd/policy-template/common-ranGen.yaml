@@ -4,7 +4,10 @@ kind: PolicyGenTemplate
 metadata:
   name: "common"
   namespace: "ztp-common"
+  annotations:
+    force: "force-again"
 spec:
+  remediationAction: enforce
   bindingRules:
     # These policies will correspond to all clusters with this label:
     common: "true"
