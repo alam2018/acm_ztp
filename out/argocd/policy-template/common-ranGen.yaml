@@ -1,24 +1,22 @@
 # ---
-# apiVersion: ran.openshift.io/v1
-# kind: PolicyGenTemplate
-# metadata:
-  # name: "common"
-  # namespace: "ztp-common"
-  # annotations:
-    # force: "force-again"
-# spec:
-  # remediationAction: enforce
-  # bindingRules:
-    # # These policies will correspond to all clusters with this label:
-    # common: "true"
-  # sourceFiles:
-    # # Create operators policies that will be installed in all clusters
-    # - fileName: SriovSubscription.yaml
-      # policyName: "sriov-subscriptions-policy"
-    # - fileName: SriovSubscriptionNS.yaml
-      # policyName: "sriov-subscriptions-policy"
-    # - fileName: SriovSubscriptionOperGroup.yaml
-      # policyName: "sriov-subscriptions-policy"
+apiVersion: ran.openshift.io/v1
+kind: PolicyGenTemplate
+metadata:
+  name: "common"
+  namespace: "ztp-common"
+
+spec:
+  bindingRules:
+    # These policies will correspond to all clusters with this label:
+    common: "true"
+  sourceFiles:
+    # Create operators policies that will be installed in all clusters
+    - fileName: SriovSubscription.yaml
+      policyName: "sriov-subscriptions-policy"
+    - fileName: SriovSubscriptionNS.yaml
+      policyName: "sriov-subscriptions-policy"
+    - fileName: SriovSubscriptionOperGroup.yaml
+      policyName: "sriov-subscriptions-policy"
     # - fileName: StorageLVMOSubscriptionNS.yaml
       # policyName: "storage-subscriptions-policy"
     # - fileName: StorageLVMOSubscriptionOperGroup.yaml
@@ -80,22 +78,4 @@
           # source: registry.redhat.io
           
           
-          
-apiVersion: ran.openshift.io/v1
-kind: PolicyGenTemplate
-metadata:
-  name: "common"
-  namespace: "ztp-common"
-spec:
-  bindingRules:
-    common: "true"
-  sourceFiles:
-    # Create SRIOV
-    - fileName: SriovSubscription.yaml
-      policyName: "sriov-sub-policy"
-      spec:
-        channel: "4.11"
-    - fileName: SriovSubscriptionNS.yaml
-      policyName: "sriov-sub-policy"
-    - fileName: SriovSubscriptionOperGroup.yaml
-      policyName: "sriov-sub-policy"
+         
