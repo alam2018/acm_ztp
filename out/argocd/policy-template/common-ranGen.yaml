@@ -16,14 +16,14 @@ spec:
       policyName: "sriov-subscriptions-policy"
     - fileName: SriovSubscriptionOperGroup.yaml
       policyName: "sriov-subscriptions-policy"
-    - fileName: StorageLVMOSubscriptionNS.yaml
-      policyName: "storage-subscriptions-policy"
-    - fileName: StorageLVMOSubscriptionOperGroup.yaml
-      policyName: "storage-subscriptions-policy"
-    - fileName: StorageLVMOSubscription.yaml
-      policyName: "storage-subscriptions-policy"
-    - fileName: StorageOperatorStatus.yaml
-      policyName: "storage-subscriptions-policy"
+    # - fileName: StorageLVMOSubscriptionNS.yaml
+      # policyName: "storage-subscriptions-policy"
+    # - fileName: StorageLVMOSubscriptionOperGroup.yaml
+      # policyName: "storage-subscriptions-policy"
+    # - fileName: StorageLVMOSubscription.yaml
+      # policyName: "storage-subscriptions-policy"
+    # - fileName: StorageOperatorStatus.yaml
+      # policyName: "storage-subscriptions-policy"
     # - fileName: SriovOperatorStatus.yaml
       # policyName: "subscriptions-policy"
     # - fileName: PtpSubscription.yaml
