@@ -94,7 +94,7 @@ spec:
     - fileName: SriovSubscription.yaml
       policyName: "sriov-sub-policy"
       spec:
-        channel: "4.10"
+        channel: "4.11"
     - fileName: SriovSubscriptionNS.yaml
       policyName: "sriov-sub-policy"
     - fileName: SriovSubscriptionOperGroup.yaml
