@@ -43,8 +43,8 @@ spec:
       policyName: "storage-subscriptions-policy"
     - fileName: StorageOperatorStatus.yaml
       policyName: "storage-subscriptions-policy"
-    - fileName: ReduceMonitoringFootprint.yaml
-      policyName: "storage-config-policy"
+    # - fileName: ReduceMonitoringFootprint.yaml
+      # policyName: "storage-config-policy"
     #
     # These CRs are in support of installation from a disconnected registry
     #
