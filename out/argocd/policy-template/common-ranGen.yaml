@@ -17,36 +17,34 @@ spec:
       policyName: "sriov-subscriptions-policy"
     - fileName: SriovSubscriptionOperGroup.yaml
       policyName: "sriov-subscriptions-policy"
+    - fileName: SriovOperatorStatus.yaml
+      policyName: "sriov-subscriptions-policy"
+    - fileName: PtpSubscription.yaml
+      policyName: "ptp-subscriptions-policy"
+    - fileName: PtpSubscriptionNS.yaml
+      policyName: "ptp-subscriptions-policy"
+    - fileName: PtpSubscriptionOperGroup.yaml
+      policyName: "ptp-subscriptions-policy"
+    - fileName: PtpOperatorStatus.yaml
+      policyName: "ptp-subscriptions-policy"
+    # - fileName: ClusterLogNS.yaml
+      # policyName: "subscriptions-policy"
+    # - fileName: ClusterLogOperGroup.yaml
+      # policyName: "subscriptions-policy"
+    # - fileName: ClusterLogSubscription.yaml
+      # policyName: "subscriptions-policy"
+    # - fileName: ClusterLogOperatorStatus.yaml
+      # policyName: "subscriptions-policy"
+    - fileName: StorageNS.yaml
+      policyName: "storage-subscriptions-policy"
+    - fileName: StorageOperGroup.yaml
+      policyName: "storage-subscriptions-policy"
+    - fileName: StorageSubscription.yaml
+      policyName: "storage-subscriptions-policy"
     - fileName: StorageOperatorStatus.yaml
       policyName: "storage-subscriptions-policy"
-    - fileName: SriovOperatorStatus.yaml
-      policyName: "subscriptions-policy"
-    - fileName: PtpSubscription.yaml
-      policyName: "subscriptions-policy"
-    - fileName: PtpSubscriptionNS.yaml
-      policyName: "subscriptions-policy"
-    - fileName: PtpSubscriptionOperGroup.yaml
-      policyName: "subscriptions-policy"
-    - fileName: PtpOperatorStatus.yaml
-      policyName: "subscriptions-policy"
-    - fileName: ClusterLogNS.yaml
-      policyName: "subscriptions-policy"
-    - fileName: ClusterLogOperGroup.yaml
-      policyName: "subscriptions-policy"
-    - fileName: ClusterLogSubscription.yaml
-      policyName: "subscriptions-policy"
-    - fileName: ClusterLogOperatorStatus.yaml
-      policyName: "subscriptions-policy"
-    - fileName: StorageNS.yaml
-      policyName: "subscriptions-policy"
-    - fileName: StorageOperGroup.yaml
-      policyName: "subscriptions-policy"
-    - fileName: StorageSubscription.yaml
-      policyName: "subscriptions-policy"
-    - fileName: StorageOperatorStatus.yaml
-      policyName: "subscriptions-policy"
     - fileName: ReduceMonitoringFootprint.yaml
-      policyName: "config-policy"
+      policyName: "storage-config-policy"
     #
     # These CRs are in support of installation from a disconnected registry
     #

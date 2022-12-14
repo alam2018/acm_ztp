@@ -11,38 +11,38 @@ spec:
     group-du-sno: ""
   mcp: "master"
   sourceFiles:
-    - fileName: ConsoleOperatorDisable.yaml
-      policyName: "config-policy"
-    # Set ClusterLogForwarder & ClusterLogging as example might be better to create another policyTemp-Group
-    - fileName: ClusterLogForwarder.yaml
-      policyName: "config-policy"
-      spec:
-        outputs:
-          - type: "kafka"
-            name: kafka-open
-            # below url is an example
-            url: tcp://10.46.55.190:9092/test
-        pipelines:
-          - name: audit-logs
-            inputRefs:
-             - audit
-            outputRefs:
-             - kafka-open
-          - name: infrastructure-logs
-            inputRefs:
-             - infrastructure
-            outputRefs:
-             - kafka-open
-    - fileName: ClusterLogging.yaml
-      policyName: "config-policy"
-      spec:
-        curation:
-          curator:
-            schedule: "30 3 * * *"
-        collection:
-          logs:
-            type: "fluentd"
-            fluentd: {}
+    # - fileName: ConsoleOperatorDisable.yaml
+      # policyName: "config-policy"
+    # # Set ClusterLogForwarder & ClusterLogging as example might be better to create another policyTemp-Group
+    # - fileName: ClusterLogForwarder.yaml
+      # policyName: "config-policy"
+      # spec:
+        # outputs:
+          # - type: "kafka"
+            # name: kafka-open
+            # # below url is an example
+            # url: tcp://10.46.55.190:9092/test
+        # pipelines:
+          # - name: audit-logs
+            # inputRefs:
+             # - audit
+            # outputRefs:
+             # - kafka-open
+          # - name: infrastructure-logs
+            # inputRefs:
+             # - infrastructure
+            # outputRefs:
+             # - kafka-open
+    # - fileName: ClusterLogging.yaml
+      # policyName: "config-policy"
+      # spec:
+        # curation:
+          # curator:
+            # schedule: "30 3 * * *"
+        # collection:
+          # logs:
+            # type: "fluentd"
+            # fluentd: {}
     # The setting below overrides the default "worker" selector predefined in
     # the source-crs. The change is recommended on SNOs configured with PTP 
     # event notification for forward compatibility with possible SNO expansion.
@@ -66,7 +66,7 @@ spec:
         profile:
         - name: "slave"
           # This interface must match the hardware in this group
-          interface: "ens5f0"
+          interface: "ens1f1"
           ptp4lOpts: "-2 -s --summary_interval -4"
           phc2sysOpts: "-a -r -n 24"
     - fileName: SriovOperatorConfig.yaml
@@ -88,45 +88,45 @@ spec:
             volumeMode: Filesystem
             fsType: xfs
             devicePaths:
-              - /dev/sdb1
-          - storageClassName: "example-storage-class-2"
-            volumeMode: Filesystem
-            fsType: xfs
-            devicePaths:
-              - /dev/sdb2
-    - fileName: DisableSnoNetworkDiag.yaml
-      policyName: "config-policy"
-    - fileName: PerformanceProfile.yaml
-      policyName: "config-policy"
-      spec:
-        cpu:
-          # These must be tailored for the specific hardware platform
-          isolated: "2-19,22-39"
-          reserved: "0-1,20-21"
-        hugepages:
-          defaultHugepagesSize: 1G
-          pages:
-            - size: 1G
-              count: 32
-    - fileName: TunedPerformancePatch.yaml
-      policyName: "config-policy"
-      spec:
-        profile:
-          - name: performance-patch
-            # The cmdline_crash CPU set must match the 'isolated' set in the PerformanceProfile above
-            data: |
-              [main]
-              summary=Configuration changes profile inherited from performance created tuned
-              include=openshift-node-performance-openshift-node-performance-profile
-              [bootloader]
-              cmdline_crash=nohz_full=2-19,22-39
-              [sysctl]
-              kernel.timer_migration=1
-              [scheduler]
-              group.ice-ptp=0:f:10:*:ice-ptp.*
-              [service]
-              service.stalld=start,enable
-              service.chronyd=stop,disable
+              - /dev/sdb
+          # - storageClassName: "example-storage-class-2"
+            # volumeMode: Filesystem
+            # fsType: xfs
+            # devicePaths:
+              # - /dev/sdb2
+    # - fileName: DisableSnoNetworkDiag.yaml
+      # policyName: "config-policy"
+    # - fileName: PerformanceProfile.yaml
+      # policyName: "config-policy"
+      # spec:
+        # cpu:
+          # # These must be tailored for the specific hardware platform
+          # isolated: "2-19,22-39"
+          # reserved: "0-1,20-21"
+        # hugepages:
+          # defaultHugepagesSize: 1G
+          # pages:
+            # - size: 1G
+              # count: 32
+    # - fileName: TunedPerformancePatch.yaml
+      # policyName: "config-policy"
+      # spec:
+        # profile:
+          # - name: performance-patch
+            # # The cmdline_crash CPU set must match the 'isolated' set in the PerformanceProfile above
+            # data: |
+              # [main]
+              # summary=Configuration changes profile inherited from performance created tuned
+              # include=openshift-node-performance-openshift-node-performance-profile
+              # [bootloader]
+              # cmdline_crash=nohz_full=2-19,22-39
+              # [sysctl]
+              # kernel.timer_migration=1
+              # [scheduler]
+              # group.ice-ptp=0:f:10:*:ice-ptp.*
+              # [service]
+              # service.stalld=start,enable
+              # service.chronyd=stop,disable
 #    --- sources needed for image registry (check ImageRegistry.md for more details)----
 #    - fileName: StorageClass.yaml
 #      policyName: "config-policy"
