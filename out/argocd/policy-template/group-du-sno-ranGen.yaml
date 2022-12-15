@@ -42,9 +42,9 @@ spec:
           interface: "ens1f0"
           ptp4lOpts: "-2 -s --summary_interval -4"
           phc2sysOpts: "-a -r -n 24"
-        recommend:
-            match:
-            - nodeLabel: "node-role.kubernetes.io/master"
+        # recommend:
+            # match:
+            # - nodeLabel: "node-role.kubernetes.io/master"
           
           
           
