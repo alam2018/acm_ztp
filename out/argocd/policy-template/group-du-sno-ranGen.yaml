@@ -38,7 +38,7 @@ spec:
         profile:
         - name: "slave"
           # This interface must match the hardware in this group
-          interface: "ens1f0"
+          interface: "ens1f1"
           ptp4lOpts: "-2 -s --summary_interval -4"
           phc2sysOpts: "-a -r -n 24"
         recommend:
