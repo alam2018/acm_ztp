@@ -30,20 +30,21 @@ spec:
     #   spec:
     #     daemonNodeSelector:
     #       node-role.kubernetes.io/worker: ""
-    # - fileName: PtpConfigSlaveCvl.yaml   # Change to PtpConfigSlaveCvl.yaml for ColumbiaVille NIC
-      # policyName: "config-policy"
-      # metadata:
-        # name: "du-ptp-slave"
-      # spec:
-        # profile:
-        # - name: "slave"
-          # # This interface must match the hardware in this group
-          # interface: "ens1f1"
-          # ptp4lOpts: "-2 -s --summary_interval -4"
-          # phc2sysOpts: "-a -r -n 24"
-        # recommend:
-            # match:
-            # - nodeLabel: "node-role.kubernetes.io/master"
+    # Change to PtpConfigSlaveCvl.yaml for ColumbiaVille NIC
+    - fileName: PtpConfigSlaveCvl.yaml   
+      policyName: "config-policy"
+      metadata:
+        name: "du-ptp-slave"
+      spec:
+        profile:
+        - name: "slave"
+          # The interface name is hardware-specific
+          interface: "ens1f0"
+          ptp4lOpts: "-2 -s --summary_interval -4"
+          phc2sysOpts: "-a -r -n 24"
+        recommend:
+            match:
+            - nodeLabel: "node-role.kubernetes.io/master"
           
           
           
