@@ -5,44 +5,16 @@ metadata:
   # The name will be used to generate the placementBinding and placementRule names as {name}-placementBinding and {name}-placementRule
   name: "group-du-sno"
   namespace: "ztp-group"
+  annotations:
+    force: "force"
 spec:
+  remediationAction: enforce
   bindingRules:
     # These policies will correspond to all clusters with this label:
     group-du-sno: ""
   mcp: "master"
   sourceFiles:
-    # - fileName: ConsoleOperatorDisable.yaml
-      # policyName: "config-policy"
-    # # Set ClusterLogForwarder & ClusterLogging as example might be better to create another policyTemp-Group
-    # - fileName: ClusterLogForwarder.yaml
-      # policyName: "config-policy"
-      # spec:
-        # outputs:
-          # - type: "kafka"
-            # name: kafka-open
-            # # below url is an example
-            # url: tcp://10.46.55.190:9092/test
-        # pipelines:
-          # - name: audit-logs
-            # inputRefs:
-             # - audit
-            # outputRefs:
-             # - kafka-open
-          # - name: infrastructure-logs
-            # inputRefs:
-             # - infrastructure
-            # outputRefs:
-             # - kafka-open
-    # - fileName: ClusterLogging.yaml
-      # policyName: "config-policy"
-      # spec:
-        # curation:
-          # curator:
-            # schedule: "30 3 * * *"
-        # collection:
-          # logs:
-            # type: "fluentd"
-            # fluentd: {}
+  #PTP config
     # The setting below overrides the default "worker" selector predefined in
     # the source-crs. The change is recommended on SNOs configured with PTP 
     # event notification for forward compatibility with possible SNO expansion.
@@ -58,7 +30,7 @@ spec:
     #   spec:
     #     daemonNodeSelector:
     #       node-role.kubernetes.io/worker: ""
-    - fileName: PtpConfigSlave.yaml   # Change to PtpConfigSlaveCvl.yaml for ColumbiaVille NIC
+    - fileName: PtpConfigSlaveCvl.yaml   # Change to PtpConfigSlaveCvl.yaml for ColumbiaVille NIC
       policyName: "config-policy"
       metadata:
         name: "du-ptp-slave"
@@ -66,9 +38,15 @@ spec:
         profile:
         - name: "slave"
           # This interface must match the hardware in this group
-          interface: "ens1f1"
+          interface: "ens1f0"
           ptp4lOpts: "-2 -s --summary_interval -4"
           phc2sysOpts: "-a -r -n 24"
+        recommend:
+            match:
+            - nodeLabel: "node-role.kubernetes.io/master"
+          
+          
+          
     - fileName: SriovOperatorConfig.yaml
       policyName: "config-policy"
       # For existing clusters with node selector set as "master", 
@@ -80,6 +58,21 @@ spec:
         configDaemonNodeSelector:
           node-role.kubernetes.io/worker: ""
         disableDrain: true
+        
+    
+
+    - fileName: SriovOperatorConfig.yaml
+      policyName: "config-policy"
+      # For existing clusters with node selector set as "master", 
+      # change the complianceType to "mustonlyhave".
+      # After complying with the policy, the complianceType can 
+      # be reverted to "musthave"
+      complianceType: musthave
+      spec:
+        configDaemonNodeSelector:
+          node-role.kubernetes.io/worker: ""
+        disableDrain: true    
+        
     - fileName: StorageLV.yaml
       policyName: "config-policy"
       spec:

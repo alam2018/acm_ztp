@@ -4,6 +4,7 @@ metadata:
   name: "vdu-sno"
   namespace: "ztp-site"
 spec:
+  remediationAction: enforce
   bindingRules:
     sites: "gitopssno"
   mcp: "master"
@@ -150,41 +151,79 @@ spec:
         linkState: auto
         vlan: 10 
                 
-        
-    # - fileName: PerformanceProfile.yaml
-      # policyName: "pao-profile-policy"
-      # metadata:
-        # name: performance
-      # spec:
-        # additionalKernelArgs:
-        # - "nohz_full=5-11"
-        # - "rcupdate.rcu_normal_after_boot=0"
-        # - "idle=poll"
-        # - "intel_iommu=on iommu=pt"
-        # cpu:
-        # #Used by application pods
-          # isolated: 7-70
-        # #Used by infra container
-          # reserved: 0-6
-        # globallyDisableIrqLoadBalancing: "false"
-        # hugepages:
-          # defaultHugepagesSize: 1G
-          # pages:
-            # - size: 1G
-              # count: 32              
-        # machineConfigPoolSelector:
-            # pools.operator.machineconfiguration.openshift.io/master: ""
-        # nodeSelector:
-            # node-role.kubernetes.io/master: ""
-        # numa:
-            # topologyPolicy: "single-numa-node"
-        # realTimeKernel:
-    # #set it as true for 4.9.6+ to enable the rt kernel
-            # enabled: true
+    
+    #Create performance profile    
+    - fileName: PerformanceProfile.yaml
+      policyName: "pao-profile-policy"
+      metadata:
+          name: performance
+      spec:
+          additionalKernelArgs:
+          - nmi_watchdog=0
+          - audit=0
+          - mce=off
+          - processor.max_cstate=1
+          - nohz_full=2-23,26-47
+          - rcupdate.rcu_normal_after_boot=0
+          - idle=poll
+          - intel_iommu=on iommu=pt
+          cpu:
+            isolated: 2-23,26-47
+            reserved: 0-1,24-25
+          globallyDisableIrqLoadBalancing: false
+          hugepages:
+            defaultHugepagesSize: 1G
+            pages:
+              - count: 32
+                size: 1G
+          machineConfigPoolSelector:
+            pools.operator.machineconfiguration.openshift.io/master: ""
+          nodeSelector:
+            node-role.kubernetes.io/master: ""
+          numa:
+            topologyPolicy: single-numa-node
+          realTimeKernel:
+            enabled: true
+            globallyDisableIrqLoadBalancing: false
+          workloadHints:
+            highPowerConsumption: true
+            realTime: true
+
+
             
-    # #Disable Chronyd
-    # - fileName: MachineConfigDisableChronyd.yaml
-      # policyName: "mc-chronyd-policy"
+    #Disable Chronyd
+    - fileName: MachineConfigDisableChronyd.yaml
+      policyName: "mc-chronyd-policy"
+      metadata:
+          labels:
+            machineconfiguration.openshift.io/role: master
+          name: disable-chronyd
+      spec:
+          config:
+            ignition:
+              version: 3.2.0
+            systemd:
+              units:
+                - contents: |
+                    [Unit]
+                    Description=NTP client/server
+                    Documentation=man:chronyd(8) man:chrony.conf(5)
+                    After=ntpdate.service sntp.service ntpd.service
+                    Conflicts=ntpd.service systemd-timesyncd.service
+                    ConditionCapability=CAP_SYS_TIME
+                    [Service]
+                    Type=forking
+                    PIDFile=/run/chrony/chronyd.pid
+                    EnvironmentFile=-/etc/sysconfig/chronyd
+                    ExecStart=/usr/sbin/chronyd $OPTIONS
+                    ExecStartPost=/usr/libexec/chrony-helper update-daemon
+                    PrivateTmp=yes
+                    ProtectHome=yes
+                    ProtectSystem=full
+                    [Install]
+                    WantedBy=multi-user.target
+                  enabled: false
+                  name: "chronyd.service"
       
     # # PTP config
     # - fileName: PtpConfigSlave.yaml
