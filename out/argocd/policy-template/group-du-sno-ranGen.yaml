@@ -32,7 +32,7 @@ spec:
     #       node-role.kubernetes.io/worker: ""
     # Change to PtpConfigSlaveCvl.yaml for ColumbiaVille NIC
     - fileName: PtpConfigSlaveCvl.yaml   
-      policyName: "config-policy"
+      policyName: "ptp-config-policy"
       metadata:
         name: "du-ptp-slave"
       spec:
@@ -49,7 +49,7 @@ spec:
           
           
     - fileName: SriovOperatorConfig.yaml
-      policyName: "config-policy"
+      policyName: "sriov-config-policy"
       # For existing clusters with node selector set as "master", 
       # change the complianceType to "mustonlyhave".
       # After complying with the policy, the complianceType can 
@@ -60,22 +60,10 @@ spec:
           node-role.kubernetes.io/worker: ""
         disableDrain: true
         
-    
-
-    - fileName: SriovOperatorConfig.yaml
-      policyName: "config-policy"
-      # For existing clusters with node selector set as "master", 
-      # change the complianceType to "mustonlyhave".
-      # After complying with the policy, the complianceType can 
-      # be reverted to "musthave"
-      complianceType: musthave
-      spec:
-        configDaemonNodeSelector:
-          node-role.kubernetes.io/worker: ""
-        disableDrain: true    
+ 
         
     - fileName: StorageLV.yaml
-      policyName: "config-policy"
+      policyName: "storage-config-policy"
       spec:
         storageClassDevices:
           - storageClassName: "example-storage-class-1"
